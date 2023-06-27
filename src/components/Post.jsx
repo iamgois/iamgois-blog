@@ -11,7 +11,8 @@ const PostList = () => {
 
   const fetchPosts = async () => {
     try {
-      const response = await fetch('http://localhost:3000/api/user_posts');
+      const response = await fetch('https://blog.thenord.com.br/api/user_posts');
+      console.log(response)
       const data = await response.json();
       setPosts(data);
     } catch (error) {

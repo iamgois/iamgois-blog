@@ -9,7 +9,7 @@ const port = 3001;
 // Configuração do CORS
 app.use(
   cors({
-    origin: 'https://blog.thenord.com.br/', // Origem permitida
+    origin: 'http://localhost:3000/', // Origem permitida
     optionsSuccessStatus: 200, // Define o status de sucesso para 200
   })
 );

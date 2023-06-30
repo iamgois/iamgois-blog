@@ -11,7 +11,7 @@ const PostList = () => {
     // Simulando um atraso de 2 segundos
     const delay = setTimeout(() => {
       setLoading(false);
-    }, 2000);
+    }, 1000);
 
     return () => clearTimeout(delay);
   }, []);
@@ -42,7 +42,7 @@ const PostList = () => {
     <div>
       {/* <h1>Lista de Posts</h1> */}
       {items.map((post) => (
-        <a href={`/posts/${post._id}`} className="hover:text-zinc-300" key={post._id}>
+        <a href={`/posts/${post._id}`} className="hover:text-zinc-300" key={post.id}>
           <h2 className="mt-3">
             {post.title.length > 80
               ? `${post.title.slice(0, 80)}...`

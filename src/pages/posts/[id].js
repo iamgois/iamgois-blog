@@ -1,6 +1,5 @@
 import { MongoClient } from 'mongodb';
 import { useRouter } from 'next/router';
-import { ObjectId } from 'bson';
 import { useEffect, useState } from 'react';
 
 export async function getServerSideProps(context) {
@@ -19,9 +18,8 @@ export async function getServerSideProps(context) {
   const collection = db.collection(process.env.collectionName);
 
   // Converta a string em um objeto ObjectId
-  const objectId = ObjectId.createFromHexString(id);
 
-  const post = await collection.findOne({ _id: objectId });
+  const post = await collection.findOne({ id: id });
 
   await client.close();
 
@@ -41,8 +39,8 @@ function Post() {
     useEffect(() => {
       const fetchPost = async () => {
         const response = await fetch(`/api/user_posts?id=${id}`);
+        console.log(response)
         const data = await response.json();
-        console.log(data)
         setPost(data);
       };
   

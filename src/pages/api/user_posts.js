@@ -6,13 +6,7 @@ const cors = require('cors');
 const app = express();
 const port = 3001;
 
-// Configuração do CORS
-app.use(
-  cors({
-    origin: 'http://localhost:3000/', // Origem permitida
-    optionsSuccessStatus: 200, // Define o status de sucesso para 200
-  })
-);
+app.use(cors()); // Todos podem fazer requisição na API
 
 export default async function handler(req, res) {
   if (req.method === 'GET') {

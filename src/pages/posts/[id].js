@@ -1,6 +1,9 @@
-import { MongoClient } from 'mongodb';
-import { useRouter } from 'next/router';
-import { useEffect, useState } from 'react';
+import { MongoClient } from "mongodb";
+import { useRouter } from "next/router";
+import { useEffect, useState } from "react";
+import Navbar from "../../components/Navbar";
+import "../../app/globals.css";
+import { Loader2 } from "lucide-react";
 
 export async function getServerSideProps(context) {
   const { id } = context.params;
@@ -19,7 +22,10 @@ export async function getServerSideProps(context) {
 
   // Converta a string em um objeto ObjectId
 
-  const post = await collection.findOne({ id: id });
+  const posts = await collection.find({}).toArray();
+  const post = posts;
+
+  console.log(posts);
 
   await client.close();
 
@@ -31,32 +37,41 @@ export async function getServerSideProps(context) {
 }
 
 function Post() {
+  const router = useRouter();
+  const { id } = router.query;
+  const [post, setPost] = useState(null);
 
-    const router = useRouter();
-    const { id } = router.query;
-    const [post, setPost] = useState(null);
-  
-    useEffect(() => {
-      const fetchPost = async () => {
-        const response = await fetch(`/api/user_posts?id=${id}`);
-        console.log(response)
-        const data = await response.json();
-        setPost(data);
-      };
-  
-      fetchPost();
-    }, []);
-  
-    if (!post) {
-      return <div>Loading...</div>;
-    }
-  
+  useEffect(() => {
+    const fetchPost = async () => {
+      const response = await fetch(`/api/user_posts`);
+      const data = await response.json();
+
+      const idParam = id;
+      const filteredItem = data.filter((item) => item._id === idParam);
+      setPost(filteredItem[0]);
+    };
+
+    fetchPost();
+  }, []);
+
+  if (!post) {
     return (
-      <div>
-        <h1>{post.title}</h1>
-        <p>{post.subtitle}</p>
+      <div className="flex items-center justify-center h-screen w-screen absolute top-0 left-0 bg-zinc-900">
+        <Loader2 width={54} height={54} className="animate-spin" />
       </div>
     );
   }
-  
-  export default Post;
+
+  return (
+    <div>
+      <Navbar />
+      <div className="sm:mx-[10%] mx-[10px] pb-4">
+        <h1 className="mt-6 font-bold text-3xl">{post.title}</h1>
+        <p className="text-xs mt-2 text-zinc-500">Publicado em {post.createdAt}</p>
+        <p className="mt-2">{post.subtitle}</p>
+      </div>
+    </div>
+  );
+}
+
+export default Post;

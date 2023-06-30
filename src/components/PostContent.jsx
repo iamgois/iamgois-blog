@@ -21,7 +21,6 @@ const PostList = () => {
       const response = await fetch("/api/user_posts");
       const data = await response.json();
       setItems(data);
-      console.log();
     } catch (error) {
       console.log("Erro ao buscar os posts:", error);
     }

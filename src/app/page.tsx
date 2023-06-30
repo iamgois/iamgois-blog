@@ -13,7 +13,7 @@ export default function Home() {
           <Github />
         </a>
       </div>
-      <div className="mx-96">
+      <div className="sm:mx-[10%] mx-[10px]">
         <p className="font-thin text-xs mt-6">Ultimas postagens</p>
         <PostList />
       </div>

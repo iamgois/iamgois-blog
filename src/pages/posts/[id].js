@@ -3,7 +3,7 @@ import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 import Navbar from "../../components/Navbar";
 import "../../app/globals.css";
-import { Loader2 } from "lucide-react";
+import { ArrowLeft, Loader2 } from "lucide-react";
 
 export async function getServerSideProps(context) {
   const { id } = context.params;
@@ -66,6 +66,7 @@ function Post() {
     <div>
       <Navbar />
       <div className="sm:mx-[10%] mx-[10px] pb-4">
+        <a href="/"><ArrowLeft className="mt-5" /></a>
         <h1 className="mt-6 font-bold text-3xl">{post.title}</h1>
         <p className="text-xs mt-2 text-zinc-500">Publicado em {post.createdAt}</p>
         <p className="mt-2">{post.subtitle}</p>

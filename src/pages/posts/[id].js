@@ -24,9 +24,6 @@ export async function getServerSideProps(context) {
 
   const posts = await collection.find({}).toArray();
   const post = posts;
-
-  console.log(posts);
-
   await client.close();
 
   return {

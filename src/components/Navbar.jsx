@@ -1,4 +1,4 @@
-import { Github } from "lucide-react";
+import { Github, Plus } from "lucide-react";
 
 export default function Navbar(){
     return(

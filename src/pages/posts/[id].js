@@ -3,7 +3,7 @@ import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 import Navbar from "../../components/Navbar";
 import "../../app/globals.css";
-import { ArrowLeft, Loader2 } from "lucide-react";
+import { ArrowLeft, Loader2, Plus } from "lucide-react";
 
 export async function getServerSideProps(context) {
   const { id } = context.params;
@@ -61,6 +61,9 @@ function Post() {
 
   return (
     <div>
+      <a className="fixed bottom-5 right-5 bg-zinc-800 p-2 rounded-full transition hover:bg-zinc-700" href="/login">
+        <Plus />
+      </a>
       <Navbar />
       <div className="sm:mx-[10%] mx-[10px] pb-4">
         <a href="/"><ArrowLeft className="mt-5" /></a>

@@ -1,6 +1,7 @@
 "use client";
 
 import { Loader2, Plus } from "lucide-react";
+import Link from "next/link";
 import React, { useEffect, useState } from "react";
 
 const PostList = () => {
@@ -36,9 +37,9 @@ const PostList = () => {
   } else{
     return (
       <div>
-        <a className="fixed bottom-5 right-5 bg-zinc-800 p-2 rounded-full transition hover:bg-zinc-700" href="/login">
+        <Link className="fixed bottom-5 right-5 bg-zinc-800 p-2 rounded-full transition hover:bg-zinc-700" href="/login">
           <Plus />
-        </a>
+        </Link>
         {/* <h1>Lista de Posts</h1> */}
         {items.map((post) => (
           <a href={`/posts/${post._id}`} className="hover:text-zinc-300" key={post.id}>

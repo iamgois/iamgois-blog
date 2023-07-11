@@ -1,7 +1,5 @@
 import PostList from "../components/PostContent";
 import Navbar from "../components/Navbar";
-import { Plus } from "lucide-react";
-import Link from "next/link";
 
 export default function Home() {
   return (

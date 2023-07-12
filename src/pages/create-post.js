@@ -3,6 +3,25 @@ import { useState } from 'react';
 import { useRouter } from 'next/router';
 import Navbar from '../components/Navbar'
 
+export async function getServerSideProps(context) {
+  // Verifique se o cookie de autenticação existe
+  const isLoggedIn = context.req.cookies.isLoggedIn === 'true';
+
+  if (!isLoggedIn) {
+    // Redirecione para a página de login caso o usuário não esteja autenticado
+    return {
+      redirect: {
+        destination: '/login',
+        permanent: false,
+      },
+    };
+  }
+
+  return {
+    props: {},
+  };
+}
+
 export default function CreatePostPage() {
   const [title, setTitle] = useState('');
   const [subtitle, setSubtitle] = useState('');

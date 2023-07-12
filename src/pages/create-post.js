@@ -59,14 +59,14 @@ export default function CreatePostPage() {
             type="text"
             value={title}
             onChange={(e) => setTitle(e.target.value)}
-            className='bg-zinc-700 rounded-md p-2 w-96'
+            className='bg-zinc-700 rounded-md p-2 sm:w-96 w-72'
             placeholder='Título'
             required
           />
           <textarea
             value={subtitle}
             onChange={(e) => setSubtitle(e.target.value)}
-            className='bg-zinc-700 rounded-md p-2 w-96 h-80'
+            className='bg-zinc-700 rounded-md p-2 sm:w-96 w-72 h-72'
             placeholder='Conteúdo'
             style={{ whiteSpace: 'pre-wrap' }}
             required

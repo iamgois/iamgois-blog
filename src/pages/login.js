@@ -73,7 +73,7 @@ export default function LoginPage() {
                         className='bg-zinc-700 rounded-md p-2'
                         placeholder='Senha'
                     />
-                    <p className='hidden' id='erro-login'>Desculpe, este usuário não existe!</p>
+                    <p className='bg-red-600 bg-opacity-70 px-6 py-2 rounded-md hidden' id='erro-login'>Desculpe, este usuário não existe.</p>
                 <button className='bg-zinc-800 hover:bg-zinc-700 py-2 rounded-md' type="submit">Entrar</button>
             </form>
         </div>

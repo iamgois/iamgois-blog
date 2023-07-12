@@ -37,8 +37,9 @@ const PostList = () => {
   } else{
     return (
       <div>
-        <Link className="fixed bottom-5 right-5 bg-zinc-800 p-2 rounded-full transition hover:bg-zinc-700" href="/login">
+        <Link className="fixed bottom-5 right-5 bg-zinc-800 p-2 rounded-full transition hover:bg-zinc-700 [&>*:nth-child(2)]:hover:block flex" href="/login">
           <Plus />
+          <p className="hidden px-2">Postar</p>
         </Link>
         {/* <h1>Lista de Posts</h1> */}
         {items.map((post) => (

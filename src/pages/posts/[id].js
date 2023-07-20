@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import Navbar from "../../components/Navbar";
 import "../../app/globals.css";
 import { ArrowLeft, Loader2, Plus } from "lucide-react";
+import Head from 'next/head'
 
 export async function getServerSideProps(context) {
   const { id } = context.params;
@@ -61,6 +62,9 @@ function Post() {
 
   return (
     <div>
+      <Head>
+        <title>{post.title}</title>
+      </Head>
       <a className="fixed bottom-5 right-5 bg-zinc-800 p-2 rounded-full transition hover:bg-zinc-700" href="/login">
         <Plus />
       </a>

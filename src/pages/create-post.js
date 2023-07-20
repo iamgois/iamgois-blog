@@ -2,6 +2,7 @@ import '../app/globals.css'
 import { useState } from 'react';
 import { useRouter } from 'next/router';
 import Navbar from '../components/Navbar'
+import Head from 'next/head'
 
 export async function getServerSideProps(context) {
   // Verifique se o cookie de autenticação existe
@@ -52,6 +53,9 @@ export default function CreatePostPage() {
 
   return (
     <div className='flex flex-col text-center h-screen'>
+      <Head>
+        <title>Nord Blog - Create Post</title>
+      </Head>
       <Navbar />
       <h1 className='font-bold text-3xl mt-4'>Create Post</h1>
       <form className='grid gap-2 items-center justify-center mt-4' onSubmit={handleSubmit}>
